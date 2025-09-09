@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+:root {
+    --primary-color: #6f42c1; 
+    --secondary-color: #16a085; 
+    --dark-bg: #2c3e50; 
+    --light-bg: #34495e; 
+    --text-color: #ecf0f1; 
+    --border-color: #4b5f71;
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.7;
+}
+
+/* Navegación */
+.navbar {
+    background-color: var(--light-bg);
+    border-bottom: 3px solid var(--primary-color);
+}
+
+.navbar .navbar-brand, .navbar .nav-link {
+    color: var(--text-color);
+}
+
+.navbar .nav-link.active, .navbar .nav-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Títulos y Encabezados */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+/* Tarjetas (Cards) */
+.card {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Botones y Enlaces */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #5a359a;
+    border-color: #5a359a;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    color: #1abc9c;
+}
+
+/* Formulario */
+.form-control {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.form-control:focus {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.5);
+}
+
+/* Pie de Página (Footer) */
+footer {
+    background-color: var(--light-bg);
+    border-top: 3px solid var(--primary-color);
+}
+
+footer a {
+    color: var(--text-color);
+    transition: color 0.2s ease-in-out;
+}
+
+footer a:hover {
+    color: var(--secondary-color);
+}
