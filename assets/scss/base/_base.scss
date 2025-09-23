@@ -1,0 +1,17 @@
+// base/_base.scss
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap');
+
+body {
+    font-family: $font-family;
+    background-color: $dark-bg;
+    color: $text-color;
+    line-height: 1.7;
+}
+
+a {
+    color: $secondary-color;
+    text-decoration: none;
+    &:hover {
+        color: darken($secondary-color, 10%);
+    }
+}

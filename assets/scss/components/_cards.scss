@@ -1,0 +1,11 @@
+// components/_cards.scss
+.card {
+    background-color: $light-bg;
+    border: 1px solid $border-color;
+    @include transition-ease; // Usamos el mixin
+
+    &:hover {
+        transform: translateY(-8px); // Un efecto más pronunciado
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+}

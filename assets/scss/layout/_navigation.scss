@@ -1,0 +1,15 @@
+// layout/_navigation.scss
+.navbar {
+    background-color: $light-bg;
+    border-bottom: 3px solid $primary-color;
+
+    .navbar-brand, .nav-link {
+        color: $text-color;
+    }
+
+    .nav-link {
+        &.active, &:hover {
+            color: $secondary-color;
+        }
+    }
+}

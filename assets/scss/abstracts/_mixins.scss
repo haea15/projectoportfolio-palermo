@@ -1,0 +1,4 @@
+// abstracts/_mixins.scss
+@mixin transition-ease($property: all, $duration: 0.3s) {
+    transition: $property $duration ease;
+}
