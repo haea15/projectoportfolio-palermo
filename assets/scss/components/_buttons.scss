@@ -1,0 +1,12 @@
+// assets/scss/components/_buttons.scss
+
+.btn-primary {
+    // ...tus estilos existentes de background, color, etc.
+    @include transition-ease(('transform', 'background-color', 'border-color')); // Solo animamos lo que cambia
+
+    &:hover {
+        background-color: #5a359a;
+        border-color: #5a359a;
+        transform: scale(1.05); // Hacemos el botón ligeramente más grande
+    }
+}

@@ -1,0 +1,29 @@
+// assets/scss/layout/_footer.scss
+
+footer a {
+    // ...tus estilos existentes
+    position: relative; // Necesario para el pseudo-elemento
+    text-decoration: none;
+    @include transition-ease(color);
+
+    &::after { // Creamos una línea animada debajo del enlace
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: $secondary-color;
+        bottom: -5px;
+        left: 0;
+        transform: scaleX(0); // Inicia invisible
+        transform-origin: right;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    &:hover {
+        color: $secondary-color;
+        &::after {
+            transform: scaleX(1); // Se expande al pasar el mouse
+            transform-origin: left;
+        }
+    }
+}
