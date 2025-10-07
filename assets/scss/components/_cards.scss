@@ -9,3 +9,65 @@
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 }
+
+/* Tarjetas Interactivas (Card Hover Effect)*/
+
+.card {
+    position: relative;
+    background-color: var(--light-bg); 
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; 
+    min-height: 150px; /* Asegura un tamaño mínimo visible */
+
+    /* OCULTAR EL CONTENIDO del cuerpo de la tarjeta por defecto */
+    .card-body {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0; /* Asegura que el título quede arriba */
+        padding-bottom: 0;
+        transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, transform 0.5s ease;
+        transform: translateY(10px); 
+    }
+
+    /* OCULTAR EL FOOTER (botones) donde exista, por defecto */
+    .card-footer {
+        opacity: 0;
+        max-height: 0;
+        padding: 0 1.25rem; /* Remueve el padding vertical por defecto */
+        transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, transform 0.5s ease;
+        border-top: none;
+        background-color: transparent;
+        transform: translateY(10px); 
+    }
+
+    /* Mostrar el contenido en estado Hover */
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        
+        /* HACER VISIBLE EL CONTENIDO Y BOTONES */
+        .card-body {
+            opacity: 1;
+            max-height: 300px; /* Suficientemente grande para el contenido */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            transform: translateY(0);
+        }
+
+        .card-footer {
+            opacity: 1;
+            max-height: 100px;
+            padding-bottom: 1rem;
+            transform: translateY(0);
+        }
+    }
+
+    /* Asegura que el título siempre sea visible */
+    .card-title {
+        opacity: 1; 
+        color: var(--secondary-color);
+        margin-bottom: 0; /* Remueve el margen inferior que puede empujar el título */
+        padding: 1rem 1.25rem 0.5rem 1.25rem; /* Padding solo para el título */
+    }
+}

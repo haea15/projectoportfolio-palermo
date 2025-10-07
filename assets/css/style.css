@@ -36,16 +36,67 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
-/* Tarjetas (Cards) */
+/* Tarjetas (Cards) - BLOQUE COMPLETO Y CORREGIDO A CSS PURO */
 .card {
+    position: relative;
     background-color: var(--light-bg);
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden; /* Necesario para que el max-height funcione y oculte el contenido */
+    min-height: 150px; /* Altura mínima para mostrar solo el título */
 }
 
+/* 1. ASEGURA QUE EL TÍTULO SIEMPRE SEA VISIBLE */
+.card .card-title {
+    opacity: 1;
+    color: var(--secondary-color);
+    margin-bottom: 0;
+    /* Ajuste de padding para que el título quede bien en la parte superior */
+    padding: 1rem 1.25rem 0.5rem 1.25rem; 
+}
+
+/* 2. OCULTA EL CUERPO Y EL PIE DE LA TARJETA POR DEFECTO */
+.card .card-body,
+.card .card-footer {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+    /* Transiciones para un efecto suave */
+    transition: opacity 0.5s ease, max-height 0.5s ease, padding 0.5s ease, transform 0.5s ease;
+    transform: translateY(10px);
+}
+
+.card .card-footer {
+    border-top: none;
+    background-color: transparent;
+}
+
+/* 3. MUESTRA Y EXPANDE EL CONTENIDO AL HACER HOVER */
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover .card-body {
+    opacity: 1;
+    max-height: 300px; /* Se expande para mostrar el contenido */
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    transform: translateY(0);
+}
+
+.card:hover .card-footer {
+    opacity: 1;
+    max-height: 100px;
+    padding-bottom: 1rem;
+    transform: translateY(0);
+}
+
+/* Pone el texto secundario de las tarjetas en blanco */
+.card .card-text {
+    color: #FFFFFF;
 }
 
 /* Botones y Enlaces */
@@ -96,4 +147,108 @@ footer a {
 
 footer a:hover {
     color: var(--secondary-color);
+}
+
+/* Estilos y Animaciones para Portfolio (Acordeón y Slider)*/
+
+/* Estilo para los ítems del acordeón */
+.accordion-item {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.4s ease;
+}
+
+.accordion-item:hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+.accordion-button {
+    background-color: var(--light-bg);
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 1.15rem;
+    padding: 1.25rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--secondary-color);
+    background-color: var(--dark-bg);
+    box-shadow: none;
+    border-bottom: 1px solid var(--secondary-color);
+}
+
+.accordion-button:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(111, 66, 193, 0.5);
+}
+
+.accordion-body {
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    padding: 2rem;
+}
+
+/* Imagen dentro del Acordeón (Transformación y Transición) */
+.project-img {
+    max-height: 280px; 
+    width: 100%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    border-radius: 6px;
+    transition: transform 0.5s ease;
+}
+
+.project-img:hover {
+    transform: scale(1.03); /* Animación de zoom al pasar el mouse (:hover) */
+}
+
+
+/* --- Animación 1: Botón con efecto de pulso (Keyframes) --- */
+@keyframes pulse {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(111, 66, 193, 0.7); }
+    70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(111, 66, 193, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(111, 66, 193, 0); }
+}
+
+.btn-animate {
+    animation: pulse 2s infinite;
+}
+
+/* --- Animación 2: Imágenes que pasan (Slider de Tecnologías/Keyframes) --- */
+
+.tech-slider-container {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+    padding: 30px 0;
+    background-color: var(--light-bg);
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+}
+
+.tech-slider {
+    display: inline-block;
+    animation: slide 25s linear infinite;
+    padding-left: 100%;
+}
+
+.tech-slider img {
+    height: 70px;
+    width: auto;
+    margin: 0 40px;
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+/* Keyframes para la animación de deslizamiento */
+@keyframes slide {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0); 
+    }
 }
